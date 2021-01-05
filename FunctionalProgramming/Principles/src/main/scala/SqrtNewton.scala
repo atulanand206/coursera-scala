@@ -4,16 +4,18 @@ import scala.annotation.tailrec
 
 object SqrtNewton {
 
-  def isGoodEnough(guess: Double, x: Double): Boolean = Math.abs(1 - (guess * guess) / x) < 0.000001
+  def squareRoot(x: Double): Double = {
+    def isGoodEnough(guess: Double, x: Double): Boolean = Math.abs(1 - (guess * guess) / x) < 0.000001
 
-  def improve(guess: Double, x: Double): Double = (guess + (x / guess)) / 2
+    def improve(guess: Double, x: Double): Double = (guess + (x / guess)) / 2
 
-  @tailrec
-  def estimateSquareRoot(guess: Double, x: Double): Double =
-    if (isGoodEnough(guess, x)) guess
-    else estimateSquareRoot(improve(guess, x), x)
+    @tailrec
+    def estimateSquareRoot(guess: Double, x: Double): Double =
+      if (isGoodEnough(guess, x)) guess
+      else estimateSquareRoot(improve(guess, x), x)
 
-  def squareRoot(x: Double): Double = estimateSquareRoot(1, x)
+    estimateSquareRoot(1, x)
+  }
 
   def printSquareRoot(x: Double): Unit = printf("%.51f : %.50f\n", x, squareRoot(x))
 
