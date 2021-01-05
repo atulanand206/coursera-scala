@@ -49,3 +49,9 @@
     1. Conditional operators can be evaluated using equivalent functions composed of if-else constructs.
     2. Some arguments may not be required to get evaluated like the y parameter in the `Conditionals.and` implementation
        and if that's defined using `: =>`, we can pass non-terminating parameter to it and it won't block the execution.
+
+7. Issues
+    1. How to handle the project, target folders in gitignore?
+    2. How to ensure that different versions of scala are not being made available to the project?
+    3. Is the folder containing build.sbt must be opened in IntelliJ? How to handle sub folders as module without root
+       being one?
