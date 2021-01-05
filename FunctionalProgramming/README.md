@@ -19,6 +19,8 @@
        usually in for loops.
     2. The main method in a class can reside inside the Scala Objects, does not work with Classes.
     3. Functions can be defined and referenced directly in the Scala REPL.
+    4. Parentheses are not required around the method definition when it's a one-liner. A single If-else construct
+       inside a method still keeps the method a one-liner if their bodies are also one-liner.
 
 4. Points to remember
     1. If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
@@ -43,5 +45,5 @@
 
 6. Conditionals
     1. Conditional operators can be evaluated using equivalent functions composed of if-else constructs.
-    2. Some arguments may not be required to get evaluated like the y parameter in the `Conditionals.and` implementation and if that's
-       defined using `: =>`, we can pass non-terminating parameter to it and it won't block the execution.
+    2. Some arguments may not be required to get evaluated like the y parameter in the `Conditionals.and` implementation
+       and if that's defined using `: =>`, we can pass non-terminating parameter to it and it won't block the execution.

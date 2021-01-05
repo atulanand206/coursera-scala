@@ -14,3 +14,4 @@
 - Fibonacci
 - Evaluation Strategies
 - Conditionals
+- Square Root using Newton's method
