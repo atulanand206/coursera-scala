@@ -18,8 +18,22 @@
     1. `_` acts as wildcard to import all the members of a scala, or if a variable name is not required to be referenced
        usually in for loops.
     2. The main method in a class can reside inside the Scala Objects, does not work with Classes.
+    3. Functions can be defined and referenced directly in the Scala REPL.
 
 4. Points to remember
     1. If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
     2. Avoid mutable local variables and replace it with helper functions that take accumulators, simply don't allow
        variables to change value inside the method. If you must change values, refactor it to a separate method.
+
+5. Expression evaluation
+    1. Expression evaluation is reduction of an expression to a value.
+    2. Parameters are not evaluated until required in the Call by name paradigm.
+    3. Non-terminating parameter which isn't used, if passed in a function will not affect the termination of evaluation
+       in the call by name paradigm.
+    4. Call by value paradigm requires all the arguments to be evaluated before the function evaluation commences.
+    5. The most common use case of non-termination is if an argument returns itself, the call by value paradigm will
+       result into an infinite loop and never get terminated.
+    5. Scala uses Call by value as call by value is exponentially more efficient for functions in practice because it
+       avoids repeated re-computation of argument expression that call by name entails.
+    6. Scala has the functionality to force call by name. While defining the argument's data type in a function, `:` can
+       be replaced with `: =>` and that argument would be referenced as call by name.
