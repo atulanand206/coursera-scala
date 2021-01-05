@@ -125,5 +125,5 @@ __pycache__/
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
-/FunctionalProgramming/Principles/src/project/
-/FunctionalProgramming/Principles/src/target/
+**/project/
+**/target/
