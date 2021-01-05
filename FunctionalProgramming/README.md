@@ -42,6 +42,8 @@
        be replaced with `: =>` and that argument would be referenced as call by name.
     7. Functions can be defined as referencing an infinite loop as it won't be evaluated then and there, while when done
        so with val, it will lead to an infinite loop instantly.
+    8. If a function calls itself as its last action, the function's stack frame can be reused. Usually helps to avoid
+       deep recursive chains.
 
 6. Conditionals
     1. Conditional operators can be evaluated using equivalent functions composed of if-else constructs.
