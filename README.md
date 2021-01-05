@@ -15,3 +15,8 @@
 - Evaluation Strategies
 - Conditionals
 - Square Root using Newton's method
+- Factorial
+- Recursion  
+    - Pascal Triangle
+    - Balance Parentheses
+    - Count Change
