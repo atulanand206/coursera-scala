@@ -25,11 +25,34 @@ object HigherOrderFunctions {
     loop(a, 0)
   }
 
+  def sumF(f: Int => Int)(a: Int, b: Int): Int =
+    if (a > b) 0 else f(a) + sumF(f)(a + 1, b)
+
+  def product(f: Int => Int)(a: Int, b: Int): Int =
+    if (a > b) 1 else f(a) * product(f)(a + 1, b)
+
+  def factProduct(x: Int): Int =
+    product(x => x)(1, x)
+
+  def mapReduce(f: Int => Int, combine: (Int, Int) => Int, zero: Int)(a: Int, b: Int): Int =
+    if (a > b) zero else combine(f(a), mapReduce(f, combine, zero)(a + 1, b))
+
+  def sumReduce(a: Int, b: Int): Int =
+    mapReduce(x => x, (x, y) => x + y, 0)(a, b)
+
+  def productReduce(a: Int, b: Int): Int =
+    mapReduce(x => x, (x, y) => x * y, 1)(a, b)
+
   def main(args: Array[String]): Unit = {
-    println(sumInts(1, 3))
-    println(sums(x => x, 1, 3))
-    println(sumFacts(1, 3))
+    println(factProduct(8))
+    println(productReduce(1, 8))
+    println(product(x => x * x)(1, 3))
+    println(sumInts(1, 10))
+    println(sumReduce(1, 10))
+    println(sums(x => x, 1, 10))
+    println(sumF(x => x * x * x)(1, 3))
     println(sumCubes(1, 3))
+    println(sumFacts(1, 3))
     println(sum((x: Int) => x * x * x, 1, 3))
   }
 }
