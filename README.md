@@ -16,7 +16,9 @@
 - Conditionals
 - Square Root using Newton's method
 - Factorial
-- Recursion  
-    - Pascal Triangle
-    - Balance Parentheses
-    - Count Change
+- Tail Recursion  
+- Pascal Triangle
+- Balance Parentheses
+- Count Change
+- Higher order functions
+- Abstraction of functions
