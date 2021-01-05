@@ -24,6 +24,7 @@
     1. If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
     2. Avoid mutable local variables and replace it with helper functions that take accumulators, simply don't allow
        variables to change value inside the method. If you must change values, refactor it to a separate method.
+    3. The definition between val and def becomes apparent when the right-hand side does not terminate.
 
 5. Expression evaluation
     1. Expression evaluation is reduction of an expression to a value.
@@ -37,3 +38,10 @@
        avoids repeated re-computation of argument expression that call by name entails.
     6. Scala has the functionality to force call by name. While defining the argument's data type in a function, `:` can
        be replaced with `: =>` and that argument would be referenced as call by name.
+    7. Functions can be defined as referencing an infinite loop as it won't be evaluated then and there, while when done
+       so with val, it will lead to an infinite loop instantly.
+
+6. Conditionals
+    1. Conditional operators can be evaluated using equivalent functions composed of if-else constructs.
+    2. Some arguments may not be required to get evaluated like the y parameter in the `Conditionals.and` implementation and if that's
+       defined using `: =>`, we can pass non-terminating parameter to it and it won't block the execution.
