@@ -1,4 +1,4 @@
-## Week 1
+## Scala Features
 
 1. Sbt interpreter can be launched using command sbt in terminal, followed by the console command in the sbt terminal.
     1. All the methods are available to be consumed in the Sbt interpreter.

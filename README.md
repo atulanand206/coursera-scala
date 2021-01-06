@@ -8,8 +8,6 @@
 
 ## Functional Programming Principles in Scala
 
-### Week 1
-
 - Hello World.
 - Fibonacci
 - Evaluation Strategies
