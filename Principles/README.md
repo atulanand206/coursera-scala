@@ -25,6 +25,8 @@
     6. Scala object's default constructor is the class definition itself.
     7. Constructor can be overloaded by using the `this(...)` method.
     8. If a method name as operator name, prefix operators can be defined by prepending `unary_` to the name.
+    9. There can be methods with multiple function calls, they may be written without
+       parentheses `def union(other: IntSet): IntSet = left union right union other incl elem`
 
 4. Points to remember
     1. If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
