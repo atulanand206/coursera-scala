@@ -21,7 +21,10 @@
     3. Functions can be defined and referenced directly in the Scala REPL.
     4. Parentheses are not required around the method definition when it's a one-liner. A single If-else construct
        inside a method still keeps the method a one-liner if their bodies are also one-liner.
-
+    5. `require(expression, message)` is used as a precondition statement.
+    6. Scala object's default constructor is the class definition itself.
+    7. Constructor can be overloaded by using the `this(...)` method.
+    
 4. Points to remember
     1. If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
     2. Avoid mutable local variables and replace it with helper functions that take accumulators, simply don't allow
