@@ -24,7 +24,8 @@
     5. `require(expression, message)` is used as a precondition statement.
     6. Scala object's default constructor is the class definition itself.
     7. Constructor can be overloaded by using the `this(...)` method.
-    
+    8. If a method name as operator name, prefix operators can be defined by prepending `unary_` to the name.
+
 4. Points to remember
     1. If you find yourself wanting to use casts, take a step back and think about what you're trying to achieve.
     2. Avoid mutable local variables and replace it with helper functions that take accumulators, simply don't allow
@@ -58,3 +59,16 @@
     2. How to ensure that different versions of scala are not being made available to the project?
     3. Is the folder containing build.sbt must be opened in IntelliJ? How to handle sub folders as module without root
        being one?
+
+8. Operator Precedence
+    1. (all letters)
+    2. `|`
+    3. `^`
+    4. `&`
+    5. `<` `>`
+    6. `=` `!`
+    7. `:`
+    8. `+` `-`
+    9. `*` `/` `%`
+    10. (all other special characters)
+    11. `a + b ^? c ?^ d less a ==> b | c  ` to `((a + b) ^?( c ?^ d)) less ((a ==> b) | c)`
