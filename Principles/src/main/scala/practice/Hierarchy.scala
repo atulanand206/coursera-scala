@@ -1,5 +1,7 @@
 package practice
 
+import java.util.NoSuchElementException
+
 abstract class IntSet {
   def incl(x: Int): IntSet
 
@@ -36,6 +38,36 @@ case class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
   override def toString: String = "{" + left + " " + elem + " " + right + "}"
 }
 
+trait List[T] {
+  def isEmpty: Boolean
+
+  def head: T
+
+  def tail: List[T]
+}
+
+class Cons[T](val head: T, val tail: List[T]) extends List[T] {
+  def isEmpty: Boolean = false
+}
+
+class Nil[T] extends List[T] {
+  def isEmpty: Boolean = true
+
+  def head: Nothing = throw new NoSuchElementException("Nil.head")
+
+  def tail: Nothing = throw new NoSuchElementException("Nil.tail")
+}
+
+class ListMethods[T] {
+
+  def singleton(elem: T) = new Cons[T](elem, new Nil[T])
+
+  def nth(n: Int, list: List[T]): T =
+    if (list.isEmpty) throw new IndexOutOfBoundsException()
+    else if (n == 0) list.head
+    else nth(n - 1, list.tail)
+}
+
 object Hierarchy extends App {
   val root = NonEmpty(3, Empty, Empty)
   val root2 = NonEmpty(6, Empty, Empty)
@@ -48,4 +80,7 @@ object Hierarchy extends App {
   newRoot = newRoot incl 1
   println(newRoot)
   println(newRoot union newRoot2)
+  val cons: Cons[Int] = new Cons(1, new Cons(2, new Cons(4, new Nil)))
+  println(new ListMethods().nth(2, cons))
+  println(new ListMethods().nth(3, cons))
 }

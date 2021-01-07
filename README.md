@@ -21,3 +21,4 @@
 - Higher order functions
 - Abstraction of functions
 - Binary Search Tree 
+- Class Hierarchy: Traits, Objects & Classes
