@@ -58,6 +58,16 @@ class Nil[T] extends List[T] {
   def tail: Nothing = throw new NoSuchElementException("Nil.tail")
 }
 
+object List {
+  def apply[T](): List[T] = new Nil[T]
+
+  def apply[T](x: T): List[T] = new Cons[T](x, apply())
+
+  def apply[T](x1: T, x2: T): List[T] = new Cons[T](x1, apply(x2))
+
+  def apply[T](x1: T, x2: T, x3: T): List[T] = new Cons[T](x1, apply(x2, x3))
+}
+
 class ListMethods[T] {
 
   def singleton(elem: T) = new Cons[T](elem, new Nil[T])
@@ -82,5 +92,8 @@ object Hierarchy extends App {
   println(newRoot union newRoot2)
   val cons: Cons[Int] = new Cons(1, new Cons(2, new Cons(4, new Nil)))
   println(new ListMethods().nth(2, cons))
-  println(new ListMethods().nth(3, cons))
+  //  println(List().head)
+  println(List(2).head)
+  println(List(1, 2).head)
+  println(List(1, 2, 3).head)
 }
