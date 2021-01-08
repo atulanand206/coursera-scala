@@ -38,19 +38,21 @@ case class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
   override def toString: String = "{" + left + " " + elem + " " + right + "}"
 }
 
-trait List[T] {
+trait List[+T] {
   def isEmpty: Boolean
 
   def head: T
 
   def tail: List[T]
+
+  def prepend[U >: T](elem: U): List[U] = new Cons[U](elem, this)
 }
 
 class Cons[T](val head: T, val tail: List[T]) extends List[T] {
   def isEmpty: Boolean = false
 }
 
-class Nil[T] extends List[T] {
+object Nil extends List[Nothing] {
   def isEmpty: Boolean = true
 
   def head: Nothing = throw new NoSuchElementException("Nil.head")
@@ -59,7 +61,7 @@ class Nil[T] extends List[T] {
 }
 
 object List {
-  def apply[T](): List[T] = new Nil[T]
+  def apply[T](): List[T] = Nil
 
   def apply[T](x: T): List[T] = new Cons[T](x, apply())
 
@@ -70,12 +72,16 @@ object List {
 
 class ListMethods[T] {
 
-  def singleton(elem: T) = new Cons[T](elem, new Nil[T])
+  def singleton(elem: T) = new Cons[T](elem, Nil)
 
   def nth(n: Int, list: List[T]): T =
     if (list.isEmpty) throw new IndexOutOfBoundsException()
     else if (n == 0) list.head
     else nth(n - 1, list.tail)
+}
+
+object Test {
+  def f(xs: List[NonEmpty]): List[IntSet] = xs prepend Empty
 }
 
 object Hierarchy extends App {
@@ -90,10 +96,11 @@ object Hierarchy extends App {
   newRoot = newRoot incl 1
   println(newRoot)
   println(newRoot union newRoot2)
-  val cons: Cons[Int] = new Cons(1, new Cons(2, new Cons(4, new Nil)))
+  val cons: Cons[Int] = new Cons(1, new Cons(2, new Cons(4, Nil)))
   println(new ListMethods().nth(2, cons))
   //  println(List().head)
   println(List(2).head)
   println(List(1, 2).head)
   println(List(1, 2, 3).head)
+  val x: List[String] = Nil
 }
