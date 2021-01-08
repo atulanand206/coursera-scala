@@ -105,7 +105,7 @@ class FunSetSuite {
       assert(contains(s, 1), "intersect contain 1")
       assert(!contains(s, 2), "intersect does not contain 2")
       assert(contains(s, 3), "intersect contain 3")
-    }razy twitter tests based on functional recursion.
+    }
   }
 
   @Test def `forall all elements meet condition`: Unit = {
