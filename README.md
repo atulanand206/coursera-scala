@@ -22,3 +22,7 @@
 - Abstraction of functions
 - Binary Search Tree 
 - Class Hierarchy: Traits, Objects & Classes
+- Pattern Matching
+- Case classes
+- List Utility methods
+- Vector and List memory representation
