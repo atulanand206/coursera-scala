@@ -31,7 +31,19 @@ object VectorFunctions extends App {
   def scalarProduct(xs: Vector[Double], ys: Vector[Double]): Double =
     (xs zip ys).map(xy => xy._1 * xy._2).sum
 
+  def scalarProducts(xs: Vector[Double], ys: Vector[Double]): Double =
+    (for {
+      i <- 0 until Math.min(xs.length, ys.length)
+    } yield xs(i) * ys(i)).sum
+
+  def scalarProductss(xs: Vector[Double], ys: Vector[Double]): Double =
+    (for {
+      (x, y) <- xs zip ys
+    } yield x * y).sum
+
   println(scalarProduct(Vector(10.0, 20.0, 30.0), Vector(5.3, 6.4, 6.5)))
+  println(scalarProducts(Vector(10.0, 20.0, 30.0), Vector(5.3, 6.4, 6.5)))
+  println(scalarProductss(Vector(10.0, 20.0, 30.0), Vector(5.3, 6.4, 6.5)))
 
   val numbers = Vector(1, 2, 3, -88)
   val people = Vector("Bob", "James", "Peter")
@@ -44,4 +56,18 @@ object VectorFunctions extends App {
 
   println(isPrime(5))
   println(isPrime(8))
+
+  def pairsWithPrimeSum(n: Int): List[(Int, Int)] =
+    ((1 until n) flatMap (i => (1 until i) map (j => (i, j))) filter (x => isPrime(x._1 + x._2))).toList
+
+  println(pairsWithPrimeSum(9))
+
+  def pairsWithPrimeSums(n: Int): List[(Int, Int)] =
+    (for {
+      i <- 1 until n
+      j <- 1 until i
+      if isPrime(i + j)
+    } yield (i, j)).toList
+
+  println(pairsWithPrimeSums(9))
 }
