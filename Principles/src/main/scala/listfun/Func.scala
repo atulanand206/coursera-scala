@@ -70,4 +70,9 @@ object Func extends App {
   println(mapFun[Int, Int](list1, x => x))
   println(mapFun[Int, Int](list1, x => x * x))
   println(lengthFun(list1))
+
+  val fruit = List("apple", "pear", "orange", "pineapple")
+  println(fruit sortWith (_.length < _.length))
+  println(fruit.sorted)
+  println(fruit groupBy (_ take 3))
 }
