@@ -53,4 +53,14 @@ object JSONImpl extends App {
   ))
   println(data)
   println(show(data))
+
+  val res = for {
+    JObj(bindings) <- List(data, data)
+    JSeq(phones) = bindings("phoneNumbers")
+    JObj(phone) <- phones
+    JStr(digits) = phone("number")
+    if digits startsWith "212"
+  } yield (JObj(Map("firstName" -> bindings("firstName"), "lastName" -> bindings("lastName"))))
+
+  println(res.map((i) => show(i)).mkString(", "))
 }
