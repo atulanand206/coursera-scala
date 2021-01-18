@@ -18,6 +18,9 @@
 - Pascal Triangle
 - Balance Parentheses
 - Count Change
+- Huffman Coding
+- Anagrams
+- Mnemonics
 - Higher order functions
 - Abstraction of functions
 - Binary Search Tree 
@@ -26,3 +29,5 @@
 - Case classes
 - List Utility methods
 - Vector and List memory representation
+- For expression with yield statement
+- Functions with multiple argument set

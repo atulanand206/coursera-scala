@@ -33,6 +33,8 @@
     2. Avoid mutable local variables and replace it with helper functions that take accumulators, simply don't allow
        variables to change value inside the method. If you must change values, refactor it to a separate method.
     3. The definition between val and def becomes apparent when the right-hand side does not terminate.
+    4. List is implemented as a LinkedList with a head element and a reference to the tail of the list.
+    5. Pattern matching on list has to have a base case representing empty list and rest with a head and a tail.
 
 5. Expression evaluation
     1. Expression evaluation is reduction of an expression to a value.
