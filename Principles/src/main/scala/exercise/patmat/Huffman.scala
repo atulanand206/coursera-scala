@@ -145,7 +145,13 @@ trait Huffman extends HuffmanInterface {
    * the resulting list of characters.
    */
   def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
+    def decodeChar(subTree: CodeTree, bits: List[Bit], acc: List[Char]): List[Char] = subTree match {
+      case Leaf(char, weight) => if (bits.nonEmpty) decodeChar(tree, bits, acc :+ char) else acc :+ char
+      case Fork(left, right, chars, weight) => if (bits.head == 0) decodeChar(left, bits.tail, acc) else decodeChar(right, bits.tail, acc)
+    }
 
+    if (bits.isEmpty) List()
+    else decodeChar(tree, bits, List())
   }
 
   /**
@@ -173,7 +179,20 @@ trait Huffman extends HuffmanInterface {
    * This function encodes `text` using the code tree `tree`
    * into a sequence of bits.
    */
-  def encode(tree: CodeTree)(text: List[Char]): List[Bit] = ???
+  def encode(tree: CodeTree)(text: List[Char]): List[Bit] = {
+    def encodeChar(subTree: CodeTree, char: Char, acc: List[Bit]): List[Bit] = subTree match {
+      case Leaf(c, w) => if (c == char) acc else List()
+      case Fork(left, right, chars, weight) => {
+        val res: List[Bit] = encodeChar(left, char, acc :+ 0)
+        if (res.isEmpty) encodeChar(right, char, acc :+ 1)
+        else res
+      }
+    }
+    text match {
+      case List() => List()
+      case char:: tail => encodeChar(tree, char, Nil) ::: encode(tree)(tail)
+    }
+  }
 
   // Part 4b: Encoding using code table
 
