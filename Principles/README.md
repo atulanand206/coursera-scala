@@ -102,3 +102,14 @@
     9. `*` `/` `%`
     10. (all other special characters)
     11. `a + b ^? c ?^ d less a ==> b | c  ` to `((a + b) ^?( c ?^ d)) less ((a ==> b) | c)`
+    
+10. Critical Exercises
+    1. [Operator Methods](src/main/scala/practice/Functions.scala)
+    2. [Operator Functions](src/main/scala/practice/HigherOrderFunctions.scala)
+    3. [Multiple Subclasses](src/main/scala/practice/Expression.scala)
+    4. [List Case Classes](src/main/scala/exercise/objsets/TweetSet.scala)
+    5. [Function as arguments](src/main/scala/exercise/patmat/Huffman.scala)
+    
+11. Require further research
+    1. FoldLeft & FoldRight
+    2. ReduceLeft & ReduceRight
