@@ -27,3 +27,4 @@
         3. consistent: if two values x and y are equal, then the sign of the result of comparing x and z should be the
            same as the sign of the result of comparing y and z.
     7. The Numeric trait has implementations for a new type to conform with the ring algebraic structure when extended. 
+    8. The while loop can be implemented using a tail recursive if-else construct.
